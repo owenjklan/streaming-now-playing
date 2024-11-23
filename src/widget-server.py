@@ -3,7 +3,7 @@ import base64
 import json
 from pathlib import Path
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from flask_socketio import SocketIO, emit
 
 from src.game_detail import GameDetail
@@ -81,6 +81,20 @@ def update():
     socketio.emit('server', new_game.to_dict())
     current_game = new_game
     return "OK Game updated"
+
+# Dashboard routes
+@app.route('/dashboard')
+def dashboard():
+    dashboard_js_url = url_for('static', filename='dashboard/dashboard.js')
+    dashboard_css_url = url_for('static', filename='dashboard/dashboard.css')
+    search_js_url = url_for('static', filename='search/search.js')
+    print("Dashboard JS URL:", dashboard_js_url)
+    return render_template(
+        'dashboard/dashboard.html',
+        dashboard_js=dashboard_js_url,
+        dashboard_css=dashboard_css_url,
+        search_js=search_js_url,
+    )
 
 # Widget-handling routes etc
 @app.route('/widget')

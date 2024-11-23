@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script src="{{ search_js }}" type="module"></script>
+    <script src="{{ dashboard_js }}" type="module"></script>
+    <link rel="stylesheet" href="{{ dashboard_css }}">
+</head>
+<body>
+<div id="outer">
+    <div id="header">
+        <div id="searchOuter">
+            <h1>Search CDRomance.org</h1>
+            <div id="searchForm">
+                {% block search_form %}{% endblock %}
+            </div>
+        </div>
+        <hr>
+        <div id="resultsPage">
+            <h1>Search Results</h1>
+            <div id="resultsTable">
+
+            </div>
+        </div>
+        <hr>
+        <div id="previewPage">
+            <h1>Preview</h1>
+            <div id="preview">
+            </div>
+        </div>
+    </div>
+    <div id="content">
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+h1 {
+    font-family: SansSerif, sans-serif;
+}
+
+
+#searchForm {
+    padding: 10px;
+    background-color: bisque;
+}
+
+#searchForm label {
+    font-family: SansSerif, sans-serif;
+}
+
+#searchForm input {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#searchForm select {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#searchForm button {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+#resultsTable {
+    border: 1px solid black;
+    padding: 10px;
+    background-color: aquamarine;
+    display: inline-block;
+    overflow: hidden;
+    font-family: SansSerif, sans-serif;
+}
+
+div.searchResult {
+    background-color: lime;
+    border-radius: 5px;
+    padding: 5px;
+    max-width: 600px;
+    max-height: 200px;
+}
+
+.caseThumbnail {
+    display: inline-block;
+    float: left;
+    height: 150px;
+    width: 150px;
+    margin: 5px;
+    margin-left: 20px;
+    padding: 0px;
+}
+
+div.searchResultElement {
+    background-color: yellow;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    height: 130px;
+    width: 260px;
+    padding: 10px;
+    display: inline-block;
+}
+
+div.resultTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div.resultRegion {
+    font-size: 16px;
+}
+
+div.resultPlatform {
+    font-size: 12px;
+    font-style: italic;
+}

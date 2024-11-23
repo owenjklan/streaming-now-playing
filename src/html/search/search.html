@@ -1,9 +1,6 @@
-<html>
-<head></head>
-<body>
 <div id="outer">
     <div id="header">
-        <form id="filter" class="search-filter" method="POST" action="/search">
+        <form id="search-form" name="search-form" class="search-filter" method="POST" action="/search">
             <label for="title">Game title</label>
             <input id="title" name="title" type="text"/>
             <select id="platform" name="platform" class="filter-dropdown">
@@ -49,16 +46,14 @@
                 <option value="europe">Europe</option>
                 <option value="japan">Japan</option>
             </select>
-            <input type="hidden" name="sorted" value=""><label>
-            <input class="filter-checkbox" type="checkbox" name="nohacks" value="true"> No hacks
-        </label>
-            <input type="submit" value="Search" />
+            <input type="hidden" name="sorted" value="">
+            <label>
+                <input class="filter-checkbox" type="checkbox" name="nohacks" value="true">No hacks
+            </label>
+        <button type="button" value="Search" onclick="submitSearch()">Search</button>
         </form>
-        <hr>
     </div>
     <div id="content">
 
     </div>
 </div>
-</body>
-</html>
