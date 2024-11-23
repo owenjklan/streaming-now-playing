@@ -1,0 +1,64 @@
+<html>
+<head></head>
+<body>
+<div id="outer">
+    <div id="header">
+        <form id="filter" class="search-filter" method="POST" action="/search">
+            <label for="title">Game title</label>
+            <input id="title" name="title" type="text"/>
+            <select id="platform" name="platform" class="filter-dropdown">
+                <option value="">All Platforms</option>
+                <optgroup label="Playstation">
+                    <option value="psx-iso">Playstation One</option>
+                    <option value="ps2-iso">Playstation 2</option>
+                    <option value="psp">Playstation Portable</option>
+                </optgroup>
+                <optgroup label="Sega">
+                    <option value="game-gear">Game Gear</option>
+                    <option value="sms_roms">Master System</option>
+                    <option value="sega_genesis_roms">Mega Drive / Genesis</option>
+                    <option value="sega_cd_isos">SEGA CD</option>
+                    <option value="sega_32x_roms">32X</option>
+                    <option value="sega_saturn_isos">Saturn</option>
+                    <option value="dc-iso">Dreamcast</option>
+                </optgroup>
+                <optgroup label="Nintendo">
+                    <option value="nes-roms">NES</option>
+                    <option value="snes-rom">SNES</option>
+                    <option value="nds-roms">NDS</option>
+                    <option value="n64-roms">N64</option>
+                    <option value="gba-roms">Gameboy Advanced</option>
+                    <option value="gbc_roms">Gameboy Color</option>
+                    <option value="gb_roms">Gameboy</option>
+                    <option value="gcn-iso">GCN</option>
+                    <option value="famicom_disk_system">Famicom Disk System</option>
+                </optgroup>
+                <optgroup label="Other">
+                    <option value="3do-iso">3DO</option>
+                    <option value="neo-geo-cd">NeoGeo CD</option>
+                    <option value="neo-geo-pocket">NeoGeo Pocket Color</option>
+                    <option value="turbografx-16">TurboGrafx-16</option>
+                    <option value="turbografx-cd">TurboGrafx-CD</option>
+                    <option value="wonderswan">WonderSwan</option>
+                    <option value="msx-roms">MSX</option>
+                </optgroup>
+            </select>
+            <select id="region" name="region" class="filter-dropdown">
+                <option value="">All Regions</option>
+                <option value="usa">USA</option>
+                <option value="europe">Europe</option>
+                <option value="japan">Japan</option>
+            </select>
+            <input type="hidden" name="sorted" value=""><label>
+            <input class="filter-checkbox" type="checkbox" name="nohacks" value="true"> No hacks
+        </label>
+            <input type="submit" value="Search" />
+        </form>
+        <hr>
+    </div>
+    <div id="content">
+
+    </div>
+</div>
+</body>
+</html>
