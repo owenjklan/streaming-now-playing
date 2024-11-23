@@ -17,13 +17,14 @@ app = Flask(
 socketio = SocketIO(app, debug=True, cors_allowed_origins='*', async_mode='eventlet')
 
 TEST_DATA = {
-    "game_title": "Test Game",
-    "game_platform": "Linux",
-    "game_region": "Australia",
-    "image_path": None,
+    "game_title": "Test Game With a Rather Long Title",
+    "game_platform": "TurboGrafx 16",
+    "game_region": "Australian Exclusive",
+    "image_path": WIDGET_BASE_DIR / 'sega-rally-cd.jpg',
 }
 
 test_game = GameDetail.from_dict(TEST_DATA)
+
 
 @app.route('/widget')
 def main():

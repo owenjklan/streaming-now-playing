@@ -8,6 +8,67 @@ div.widgetOuter {
     max-width: 1000px;
     height: 182px;
     width: 980px;
-    background-color: blue;
+    /*background-color: blue;*/
+    background-image: url("md-grid-fine.png");
     border-radius: 20px;
+    overflow: hidden;
+}
+
+div.widgetContent {
+    display: block;
+    margin: 0 auto;
+    /*height: 150px;*/
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+div.gameCase {
+    display: inline-block;
+    float: left;
+    height: 150px;
+    width: 150px;
+    margin: 5px;
+    margin-left: 20px;
+    padding: 0px;
+    /*background-color: lime;*/
+}
+
+div.gameCaseImage {
+    display: inline-block;
+    text-align: center;
+    margin: auto auto;
+}
+
+div.gameDetails {
+    background-color: rgba(255, 64, 64, 0.7);
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    height: 130px;
+    width: 760px;
+    padding: 10px;
+    display: inline-block;
+    /*float: left;*/
+}
+
+div.gameTitle {
+    color: aliceblue;
+    font-family: SansSerif, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+div.gamePlatform {
+    color: aliceblue;
+    font-family: SansSerif, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+div.gameRegion {
+    color: aliceblue;
+    font-family: SansSerif, sans-serif;
+    font-style: italic;
+    font-size: 25px;
 }

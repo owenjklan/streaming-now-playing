@@ -31,4 +31,8 @@ socket.on("server", function(msg) {
     } else {
         document.getElementById("gamePlatform").innerHTML = "Unknown";
     }
+
+    console.log("Image data: " + serverMessage.image_data);
+
+    document.getElementById("gameCaseImage").src = serverMessage.image_data;
 });
