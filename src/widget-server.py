@@ -6,13 +6,15 @@ from flask_socketio import SocketIO, emit
 
 from src.game_detail import GameDetail
 
-WIDGET_BASE_DIR = Path(__file__).resolve(strict=True).parent.parent / 'widget'
-print(f"Widget source base directory: {WIDGET_BASE_DIR}")
+HTML_BASE_DIR = Path(__file__).resolve().parent / 'html'
+WIDGET_BASE_DIR = HTML_BASE_DIR / 'widget'
+SEARCH_BASE_DIR = HTML_BASE_DIR / 'search'
+print(f"HTML source base directory: {HTML_BASE_DIR}")
 
 app = Flask(
     __name__,
-    static_folder=WIDGET_BASE_DIR,
-    template_folder=WIDGET_BASE_DIR,
+    static_folder=HTML_BASE_DIR,
+    template_folder=HTML_BASE_DIR,
 )
 socketio = SocketIO(app, debug=True, cors_allowed_origins='*', async_mode='eventlet')
 
@@ -28,7 +30,7 @@ test_game = GameDetail.from_dict(TEST_DATA)
 
 @app.route('/widget')
 def main():
-    return render_template('widget.html')
+    return render_template('widget/widget.html')
 
 
 @socketio.on('connect')
