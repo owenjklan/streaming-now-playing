@@ -1,0 +1,13 @@
+body {
+    background-color: #0f0;
+}
+
+div.widgetOuter {
+    margin: 10px;
+    max-height: 202px;
+    max-width: 1000px;
+    height: 182px;
+    width: 980px;
+    background-color: blue;
+    border-radius: 20px;
+}

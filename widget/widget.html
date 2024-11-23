@@ -1,0 +1,23 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"
+            integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ=="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='main.js')}}"></script>
+</head>
+<body>
+<div class="widgetOuter">
+    <div class="widgetContent">
+        <div class="gameCase">
+            <img id="gameCaseImage" class="gameCaseImage" src="{{ url_for('static', filename='case_image') }}"/>
+        </div>
+        <div class="gameDetails">
+            <div id="gameTitle" class="gameTitle"></div>
+            <div id="gamePlatform" class="gamePlatform"></div>
+            <div id="gameRegion" class="gameRegion"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
