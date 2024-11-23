@@ -22,7 +22,7 @@ class GameDetail(object):
 
         # TODO: Remove the encoded knowledge of where to find the fallback image
         self._dummy_image_type = "image/png"
-        self._dummy_image_path = Path(__file__).resolve(strict=True).parent.parent / "widget" / "dummy_image.png"
+        self._dummy_image_path = Path(__file__).resolve(strict=True).parent / "html" / "widget" / "dummy_image.png"
         self.image_path = image_path if image_path is not None else self._dummy_image_path
         self.image_type = magic.from_file(image_path, mime=True) if image_path is not None else self._dummy_image_type
         self.image_data = self._load_image_data()

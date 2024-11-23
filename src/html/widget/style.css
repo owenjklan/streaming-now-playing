@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Anta";
+    src: url('Anta-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Silkscreen";
+    src: url('Silkscreen-Regular.ttf') format('truetype');
+}
+
 body {
     background-color: #0f0;
 }
@@ -54,21 +64,21 @@ div.gameDetails {
 
 div.gameTitle {
     color: aliceblue;
-    font-family: SansSerif, sans-serif;
+    font-family: "Anta", SansSerif, sans-serif;
     font-weight: bold;
     font-size: 40px;
 }
 
 div.gamePlatform {
     color: aliceblue;
-    font-family: SansSerif, sans-serif;
+    font-family: "Silkscreen", SansSerif, sans-serif;
     font-weight: bold;
     font-size: 30px;
 }
 
 div.gameRegion {
     color: aliceblue;
-    font-family: SansSerif, sans-serif;
+    font-family: "Silkscreen", SansSerif, sans-serif;
     font-style: italic;
     font-size: 25px;
 }

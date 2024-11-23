@@ -7,7 +7,7 @@ from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 
 from src.game_detail import GameDetail
-from src.search import send_search
+from src.search import send_search, download_game_image, extract_full_case_image
 
 HTML_BASE_DIR = Path(__file__).resolve().parent / 'html'
 WIDGET_BASE_DIR = HTML_BASE_DIR / 'widget'
@@ -21,14 +21,14 @@ app = Flask(
 )
 socketio = SocketIO(app, debug=True, cors_allowed_origins='*', async_mode='eventlet')
 
-TEST_DATA = {
-    "game_title": "Test Game With a Rather Long Title",
-    "game_platform": "TurboGrafx 16",
-    "game_region": "Australian Exclusive",
-    "image_path": WIDGET_BASE_DIR / 'sega-rally-cd.jpg',
+NULL_GAME = {
+    "game_title": "No current game has been set",
+    "game_platform": "",
+    "game_region": "",
+    "image_path": None
 }
 
-test_game = GameDetail.from_dict(TEST_DATA)
+current_game = GameDetail.from_dict(NULL_GAME)
 
 # Search handling
 @app.route('/search', methods=['GET', 'POST'])
@@ -55,14 +55,31 @@ def search():
 # Update the widget with new details
 @app.route("/update", methods=["POST"])
 def update():
+    """
+    The parameters necessary to download the full game case image
+    are provided in the payload. The payload is in the correct
+    format to send to the client mostly unmodified. The modifications
+    we do make are essentially setting the image data after the
+    case image has been downloaded.
+    """
+    global current_game
     update_params = request.form.to_dict()
-    # print(json.dumps(update_params, indent=4))
     decoded_parameters = json.loads(base64.b64decode(update_params["update_params"]).decode("utf-8"))
-    # # print(decoded_parameters)
-    # print(json.dumps(decoded_parameters, indent=4))
+
+    # We need to extract the full case image from the game
+    # details page and save it to disk.
+    game_case_url = extract_full_case_image(decoded_parameters["game_page_url"])
+    game_case_path = download_game_image(
+        game_case_url,
+        decoded_parameters["game_title"],
+        decoded_parameters["game_platform"],
+        decoded_parameters["game_region"]
+    )
+    decoded_parameters["image_path"] = game_case_path
 
     new_game = GameDetail.from_dict(decoded_parameters)
-    emit('server', new_game.to_dict())
+    socketio.emit('server', new_game.to_dict())
+    current_game = new_game
     return "OK Game updated"
 
 # Widget-handling routes etc
@@ -73,7 +90,7 @@ def main():
 
 @socketio.on('connect')
 def widget_connect():
-    emit('server', test_game.to_dict())
+    emit('server', current_game.to_dict())
 
 
 if __name__ == '__main__':
