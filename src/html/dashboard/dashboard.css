@@ -37,13 +37,15 @@ h1 {
     display: inline-block;
     overflow: hidden;
     font-family: SansSerif, sans-serif;
+    height: auto;
+    width: 1000px;
 }
 
 div.searchResult {
     background-color: lime;
     border-radius: 5px;
     padding: 5px;
-    max-width: 600px;
+    max-width: 1000px;
     max-height: 200px;
 }
 

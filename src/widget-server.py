@@ -43,6 +43,7 @@ def search():
             render_template(
                 'search/results.html',
                 results=search_results,
+                results_css=url_for('static', filename='search/results.css'),
                 update_url=url_for('update'),
             )
         )
