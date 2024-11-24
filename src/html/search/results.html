@@ -8,21 +8,43 @@
     </style>
 </head>
 <body>
-<h1>Search Results</h1>
-
+{% if results | length == 0 %}
+There were no results
+{% else %}
 {% for result in results %}
 <div class="searchResult">
-    <img class="caseThumbnail" src="{{ result.thumbnail_data_url }}" height="150px" width="150px"  alt="" />
+    <img class="caseThumbnail" src="{{ result.thumbnail_data_url }}" height="150px" width="150px" alt=""/>
     <div class="searchResultElement">
         <div class="resultTitle">{{ result.game_title }}</div>
         <div class="resultRegion">{{ result.game_region }}</div>
         <div class="resultPlatform">{{ result.game_platform }}</div>
-        <form action="/update" method="POST">
-            <input type="hidden" name="update_params" value="{{ result.encoded }}">
-            <button type="button" class="useResultButton" onclick="updateGame({{ result.encoded }})">Use this result</button>
-        </form>
+        <button
+                type="button"
+                class="useResultButton"
+                onclick="(function () {
+                    const detailsObj = JSON.parse('{{ result.encoded }}');
+                    console.log(detailsObj);
+
+                    alert('Update URL:' + '{{ update_url }}')
+
+                    // We don't handle the promise. If it fails then
+                    // the whole system is probably broken.
+                    // TODO: Implement this JS properly, handle the promise
+                    // returned from fetch() properly.
+                    const response = fetch(
+                        '{{ update_url }}',
+                        {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(detailsObj)
+                        }
+                    );
+                })();">
+            Use this result
+        </button>
     </div>
 </div>
 {% endfor %}
+{% endif %}
 </body>
 </html>

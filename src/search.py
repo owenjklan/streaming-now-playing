@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+from typing import List, Dict, Any
 
 import magic
 from encodings.base64_codec import base64_encode
@@ -68,7 +69,7 @@ def download_game_image(
     return full_path
 
 
-def send_search(search_params: dict) -> None:
+def send_search(search_params: dict) -> list[dict[str, str | Any]]:
     URL = "https://cdromance.org"
     search_params["s"] = search_params.pop("title")
     response = requests.get(URL, params=search_params)
@@ -103,7 +104,8 @@ def send_search(search_params: dict) -> None:
             game_thumb,
         )
         element["thumbnail_data_url"] = thumbnail_data_url
-        element["encoded"] = base64.b64encode(bytes(json.dumps(element), "utf-8")).decode("utf-8")
+        element["encoded"] = json.dumps(element)
+        # element["encoded"] = base64.b64encode(bytes(json.dumps(element), "utf-8")).decode("utf-8")
         print("Search result JSON:", json.dumps(element, indent=4))
         returned_elements.append(element)
 

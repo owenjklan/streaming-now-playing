@@ -42,7 +42,8 @@ def search():
         return (
             render_template(
                 'search/results.html',
-                results=search_results
+                results=search_results,
+                update_url=url_for('update'),
             )
         )
     elif request.method == 'GET':
@@ -63,8 +64,7 @@ def update():
     case image has been downloaded.
     """
     global current_game
-    update_params = request.form.to_dict()
-    decoded_parameters = json.loads(base64.b64decode(update_params["update_params"]).decode("utf-8"))
+    decoded_parameters = request.json
 
     # We need to extract the full case image from the game
     # details page and save it to disk.

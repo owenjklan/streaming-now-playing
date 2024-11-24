@@ -1,6 +1,8 @@
 
-
 async function submitSearch() {
+    // Send search to our back-end, which will then pass it off
+    // to the ROM site and return parsed details, suitable for
+    // submitting to the "/update" endpoint.
     const url = "http://localhost:22222/search";
 
     const searchForm = document.getElementById('search-form');
