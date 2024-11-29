@@ -16,7 +16,7 @@ function loadScript(url) {
 
 // Load the HTML for our search form
 async function loadSearchForm() {
-    const url = "http://localhost:22222/search";
+    const url = "/search";
 
     try {
         const response = await fetch(url);

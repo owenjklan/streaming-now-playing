@@ -3,11 +3,12 @@ import base64
 import json
 from pathlib import Path
 
+import click
 from flask import Flask, render_template, request, url_for
 from flask_socketio import SocketIO, emit
 
-from src.game_detail import GameDetail
-from src.search import send_search, download_game_image, extract_full_case_image
+from game_detail import GameDetail
+from search import send_search, download_game_image, extract_full_case_image
 
 HTML_BASE_DIR = Path(__file__).resolve().parent / 'html'
 WIDGET_BASE_DIR = HTML_BASE_DIR / 'widget'
@@ -97,6 +98,7 @@ def dashboard():
         search_js=search_js_url,
     )
 
+
 # Widget-handling routes etc
 @app.route('/widget')
 def main():
@@ -108,5 +110,13 @@ def widget_connect():
     emit('server', current_game.to_dict())
 
 
+@click.command()
+@click.option("--port", "-p", "port", type=int, default=22222)
+@click.option("--bind-ip", "-b", "bind_ip", type=str, default="0.0.0.0")
+@click.option("--debug", "-D", "debug_flag", is_flag=True)
+def main(bind_ip: str, port: int, debug_flag: bool):
+    socketio.run(app, host=bind_ip, port=port, debug=debug_flag)
+
+
 if __name__ == '__main__':
-    socketio.run(app, host='127.0.0.1', port=22222, debug=True)
+    main()
