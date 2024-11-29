@@ -95,13 +95,15 @@ div.resultPlatform {
 }
 
 #manualEntry input {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
+}
+
+#manualTitle {
+    width: 300px;
 }
 
 #manualEntry select {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
 }
 
 #manualEntry button {
@@ -111,3 +113,33 @@ div.resultPlatform {
     font-size: 20px;
     margin-left: 20px;
 }
+
+/*#manualOuter {*/
+/*    display: block;*/
+/*    overflow: hidden;*/
+/*}*/
+
+#manualEntry {
+}
+
+#manual-form {
+
+}
+
+#manualCaseImage {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+#manual-form {
+    vertical-align: center;
+    display: inline-block;
+    overflow: hidden;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#ma
