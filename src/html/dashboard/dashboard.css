@@ -84,3 +84,30 @@ div.resultPlatform {
     font-size: 12px;
     font-style: italic;
 }
+
+#manualEntry {
+    padding: 10px;
+    background-color: bisque;
+}
+
+#manualEntry label {
+    font-family: SansSerif, sans-serif;
+}
+
+#manualEntry input {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#manualEntry select {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#manualEntry button {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+}

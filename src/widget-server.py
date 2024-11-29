@@ -55,7 +55,26 @@ def search():
 
     return "OK"
 
-# Update the widget with new details
+# Update widget with manually entered text values
+@app.route('/manual_update', methods=['POST'])
+def manual_update():
+    request_json = request.json
+
+    update_args = {}
+
+    update_args["action"] = "manual"
+    update_args["game_title"] = request_json["title"] if "title" in request_json else None
+    update_args["game_platform"] = request_json["platform"] if "platform" in request_json else None
+    update_args["game_region"] = request_json["region"] if "region" in request_json else None
+    update_args["image_data"] = request_json["image_data"] if "image_data" in request_json else None
+
+    print("Will manually update with:")
+    print(json.dumps(update_args, indent=4))
+
+    socketio.emit('server', update_args)
+    return "OK"
+
+# Update the widget with new details from search selection
 @app.route("/update", methods=["POST"])
 def update():
     """
@@ -80,7 +99,9 @@ def update():
     decoded_parameters["image_path"] = game_case_path
 
     new_game = GameDetail.from_dict(decoded_parameters)
-    socketio.emit('server', new_game.to_dict())
+    update_dict = new_game.to_dict()
+    update_dict["action"] = "search_update"
+    socketio.emit('server', update_dict)
     current_game = new_game
     return "OK Game updated"
 
@@ -110,13 +131,13 @@ def widget_connect():
     emit('server', current_game.to_dict())
 
 
-@click.command()
-@click.option("--port", "-p", "port", type=int, default=22222)
-@click.option("--bind-ip", "-b", "bind_ip", type=str, default="0.0.0.0")
-@click.option("--debug", "-D", "debug_flag", is_flag=True)
-def main(bind_ip: str, port: int, debug_flag: bool):
-    socketio.run(app, host=bind_ip, port=port, debug=debug_flag)
+# @click.command()
+# @click.option("--port", "-p", "port", type=int, default=22222)
+# @click.option("--bind-ip", "-b", "bind_ip", type=str, default="0.0.0.0")
+# @click.option("--debug", "-D", "debug_flag", is_flag=True)
+# def main(bind_ip: str, port: int, debug_flag: bool):
+#     socketio.run(app, host=bind_ip, port=port, debug=debug_flag)
 
 
 if __name__ == '__main__':
-    main()
+    socketio.run(app, host="0.0.0.0", port=22222, debug=True)

@@ -8,6 +8,22 @@
 <body>
 <div id="outer">
     <div id="header">
+        <div id="manualOuter">
+            <h1>Manually Set Details</h1>
+            <div id="manualEntry">
+                <form id="manual-form" name="manual-form" class="manual-form" method="POST" action="/manual">
+                    <label for="manualTitle">Game title</label>
+                    <input id="manualTitle" name="manualTitle" type="text"/>
+                    <label for="manualPlatform">Platform</label>
+                    <input id="manualPlatform" name="manualPlatform" type="text"/>
+                    <label for="manualRegion">Region</label>
+                    <input id="manualRegion" name="manualRegion" type="text"/>
+                    <img id="manualCaseImage" src=""/>
+                    <button type="button" value="Apply" onclick="applyManualValues()">Apply</button>
+                </form>
+            </div>
+        </div>
+        <hr>
         <div id="searchOuter">
             <h1>Search CDRomance.org</h1>
             <div id="searchForm">

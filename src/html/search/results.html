@@ -19,7 +19,13 @@ There were no results
                 class="useResultButton"
                 onclick="(function () {
                     const detailsObj = JSON.parse('{{ result.encoded }}');
-                    console.log(detailsObj);
+
+                    // Update the values in the manual edit form to the selected game
+                    // alert('Update manual with: ' + detailsObj['game_title']);
+                    document.getElementById('manualTitle').value = detailsObj['game_title'];
+                    document.getElementById('manualPlatform').value = detailsObj['game_platform'];
+                    document.getElementById('manualRegion').value = detailsObj['game_region'];
+                    document.getElementById('manualCaseImage').src = detailsObj['thumbnail_data_url']
 
                     // We don't handle the promise. If it fails then
                     // the whole system is probably broken.
